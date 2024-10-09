@@ -9,8 +9,8 @@ dotenv.config()
 app.use(express.json());
 
 // POST endpoint to send email
-app.get('/send-email', async (req, res) => {
-    // const { to, subject, text, html } = req.body;
+app.post('/send-email', async (req, res) => {
+    const { to, subject, text, html } = req.body;
 
     // AWS SMTP settings
     const transporter = nodemailer.createTransport({
@@ -25,11 +25,11 @@ app.get('/send-email', async (req, res) => {
 
     // Email content
     const mailOptions = {
-        from: process.env.smtp_from, // Sender address
-        to: '',          // List of receivers from request body
-        subject: '',     // Subject from request body
-        text: '',        // Plain text from request body
-        html: ''         // HTML body from request body
+        from, // Sender address
+        to,          // List of receivers from request body
+        subject,     // Subject from request body
+        text,        // Plain text from request body
+        html         // HTML body from request body
     };
 
     try {
