@@ -25,7 +25,7 @@ app.post('/send-email', async (req, res) => {
 
     // Email content
     const mailOptions = {
-        from, // Sender address
+        from,        // Sender address
         to,          // List of receivers from request body
         subject,     // Subject from request body
         text,        // Plain text from request body
